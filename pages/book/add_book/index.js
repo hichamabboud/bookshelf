@@ -21,13 +21,13 @@ const AddBook = () => {
         summary: ""
     });
 
-    // const toast = useToast({
-    //                 position: 'top',
-    //                 containerStyle: {
-    //                 width: '100px',
-    //                 maxWidth: '100%',
-    //                 },
-    //     })
+    const toast = useToast({
+                    position: 'top',
+                    containerStyle: {
+                    width: '100px',
+                    maxWidth: '100%',
+                    },
+        })
 
         
     const { title, author, price, summary, category } = newBook;
@@ -45,49 +45,69 @@ const AddBook = () => {
         setNewBook({...newBook, [name]:value});
     }
 
-    // const validator = (e) => { 
+    const validator = (e) => { 
 
-    //     const { title, author, price, summary } = newBook;
+        const { title, author, price, summary } = newBook;
 
-    //     if (title.length < 1) {
-    //         toast({
-    //             title: 'title field cannot be empty',
-    //             status: 'error',
-    //             duration: 5000,
-    //             isClosable: true,
-    //         })
-    //     }
+        if (title.length < 1) {
+            toast({
+                title: 'title field cannot be empty',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
+        }
 
-    //     if (author.length < 1) {
-    //         toast({
-    //             title: 'author field cannot be empty',
-    //             status: 'error',
-    //             duration: 5000,
-    //             isClosable: true,
-    //         })
-    //     }
+        if (author.length < 1) {
+            toast({
+                title: 'author field cannot be empty',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
+        }
 
-    //     if (price.length < 1) {
-    //         toast({
-    //             title: 'price field cannot be empty',
-    //             status: 'error',
-    //             duration: 5000,
-    //             isClosable: true,
-    //         })
-    //     }
+        if (price.length < 1) {
+            toast({
+                title: 'price field cannot be empty',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
+        }
 
-    //     if (summary.length < 1) {
-    //         toast({
-    //             title: 'summary field cannot be empty',
-    //             status: 'error',
-    //             duration: 5000,
-    //             isClosable: true,
-    //         })
-    //     }
-    //  };
+        if (summary.length < 100) {
+            toast({
+                title: 'summary field cannot be less than 100 characters',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
+        }
+
+        if (summary.length > 500) {
+            toast({
+                title: 'summary field cannot be more than 500 characters',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            })
+        }
+     };
 
     const handleNewBookSubmit = async (e) => {
         e.preventDefault();
+        
+        const { title, summary, price, category, author } = newBook;
+
+        validator()
+
+        if (title.length < 1 || category.length < 1 || price.length < 1) {
+            return;
+        } else if (summary.length < 100 || summary.length > 500) { 
+            return;
+        }
+
         
         try {
             await fetch("http://localhost:3000/api/all_books", {

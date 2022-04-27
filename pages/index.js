@@ -53,7 +53,7 @@ const Home = ({ books }) => {
                 <tr key={book._id}>
                   <td> <Text> { book.title } </Text> </td>
                   <td> <Text> { book.author} </Text> </td>
-                  <td> <Text> {book.price} </Text> </td>
+                  <td> <Text> ${book.price} </Text> </td>
                   <td> <Text textAlign='center'> { book.category } </Text></td>
                   <td> 
                     <HStack justifyContent='space-around' p={0}>
