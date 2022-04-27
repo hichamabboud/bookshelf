@@ -12,7 +12,7 @@ const Home = ({ books }) => {
   const handleBookDelete = async (id) => { 
 
           try {
-            await fetch(`http://localhost:3000/api/a_book/${id}`, {
+            await fetch(`/api/a_book/${id}`, {
                 method: "DELETE",
         
             })
