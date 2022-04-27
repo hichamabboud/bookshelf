@@ -110,7 +110,7 @@ const AddBook = () => {
 
         
         try {
-            await fetch("http://localhost:3000/api/all_books", {
+            await fetch("/api/all_books", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

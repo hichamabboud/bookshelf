@@ -87,7 +87,7 @@ const Home = ({ books }) => {
 
 export async function getServerSideProps() {
   
-  const response = await fetch("http://localhost:3000/api/all_books/");
+  const response = await fetch("/api/all_books/");
   const books = await response.json();
   return { 
     props: {

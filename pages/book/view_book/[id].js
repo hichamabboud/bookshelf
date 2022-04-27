@@ -59,7 +59,7 @@ const ViewBook = ({ singleBook }) => {
 
 export async function getServerSideProps({ query: {id} }) { 
 
-    const response = await fetch(`http://localhost:3000/api/a_book/${id}`);
+    const response = await fetch(`/api/a_book/${id}`);
     const singleBook = await response.json();
 
     return {
